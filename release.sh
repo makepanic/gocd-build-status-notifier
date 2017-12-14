@@ -11,6 +11,9 @@ cp target/stash-pr-status*.jar dist/
 mvn clean install -DskipTests -P gerrit.cs.status
 cp target/gerrit-cs-status*.jar dist/
 
+mvn clean install -DskipTests -P bitbucket.pr.status
+cp target/bitbucket-pr-status*.jar dist/
+
 (
   cd dist
   for i in *.jar; do

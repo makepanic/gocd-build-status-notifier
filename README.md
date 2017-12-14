@@ -6,6 +6,7 @@ Supported:
 * GitHub Pull Request status
 * Stash Pull Request status
 * Gerrit Change Set status
+* Bitbucket Commit status
 
 ## Requirements
 These plugins require GoCD version >= v15.x or above
@@ -15,7 +16,7 @@ These plugins require GoCD version >= v15.x or above
 - Download the latest plugin jar from [Releases](https://github.com/srinivasupadhya/gocd-build-status-notifier/releases) section. Place it in `<go-server-location>/plugins/external` & restart Go Server.
 
 ## Behavior
-- Go Server notifies the plugin on every `Stage Status Change` with relevant details. The plugin scans the `build-cause` to see if the `github.pr` / `stash.pr` / `gerrit.cs` material is present.
+- Go Server notifies the plugin on every `Stage Status Change` with relevant details. The plugin scans the `build-cause` to see if the `github.pr` / `stash.pr` / `gerrit.cs` / `bitbucket.pr` material is present.
 - If it is, then Pull Request/Change Set status is updated with `status=stage-result`, `context=pipeline-name/stage-name` & `target-url=trackback-url`.
 
 ## Configuration
@@ -100,6 +101,16 @@ Eg:
 -Dgo.plugin.build.status.gerrit.username=johndoe
 -Dgo.plugin.build.status.gerrit.password=thisaintapassword
 -Dgo.plugin.build.status.gerrit.codeReviewLabel=Verified
+```
+
+#### Bitbucket
+**Setup:**
+- You need to provide `endpoint`, `username`, `password` through system property `go.plugin.build.status.bitbucket.endpoint`, `go.plugin.build.status.bitbucket.username`, `go.plugin.build.status.bitbucket.password`.
+Eg:
+```
+-Dgo.plugin.build.status.gerrit.endpoint=https://api.bitbucket.org
+-Dgo.plugin.build.status.gerrit.username=johndoe
+-Dgo.plugin.build.status.gerrit.password=thisaintapassword
 ```
 
 ## FAQs
